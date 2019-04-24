@@ -1,5 +1,7 @@
 {
   "name": "rxSimpleSavings",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
