@@ -9,3 +9,10 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+:root {
+  --ion-color-primary: #4c3e54;
+  --ion-color-primary-rgb: 72, 62, 84;
+  --ion-color-secondary: #00bcf2;
+  --ion-color-secondary-rgb: 0, 188, 242;
+}
