@@ -24,44 +24,13 @@ export class AppComponent {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+
             this.localNotifications.on('click').subscribe(notification => {
                 if (notification.data.id === 4) {
                     this.navCtrl.navigateForward(`/tabs/tab3`);
                 } else {
                     this.navCtrl.navigateForward(`/tabs/tab2/${notification.data.id}`);
                 }
-            });
-
-            this.localNotifications.schedule({
-                id: 1,
-                text: 'Make a quick call and save $354!',
-                icon: '/assets/rxss-mobile-logo.svg',
-                foreground: true,
-                data: { id: 1 }
-            });
-
-            this.localNotifications.schedule({
-                id: 2,
-                text: 'Filling your prescription? Switch to a generic and save $30 today!',
-                icon: '/assets/icon/favicon.png',
-                foreground: true,
-                data: { id: 2 }
-            });
-
-            this.localNotifications.schedule({
-                id: 3,
-                text: 'Filling your prescription? Go to Walgreens instead and save $17 today!',
-                icon: '/assets/icon/favicon.png',
-                foreground: true,
-                data: { id: 3 }
-            });
-
-            this.localNotifications.schedule({
-                id: 4,
-                text: 'Did you save money today? Share it!',
-                icon: '/assets/icon/favicon.png',
-                foreground: true,
-                data: { id: 4 }
             });
         });
     }
