@@ -1,11 +1,40 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-thumbnail
+      slot="start"
+      style="margin: 5px 0 5px 5px; padding: 5px 10px 5px 5px; width: 62px; border-right: 2px solid white;"
+    >
+      <ion-img src="assets/rxss-mobile-logo.svg"></ion-img>
+    </ion-thumbnail>
+
     <ion-title>
-      Tab Three
+      <div style="font-size: 14px; position: relative; top: 0; vertical-align: text-top">RxSimpleSavings</div>
+      <ion-text>Share</ion-text>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="pusher()">Push me!</ion-button>
+  <div style="color: white; background-color: #00bcf2">
+    <h2 style="margin: 0; padding: 30px 20px 15px 20px; text-align: center;">Share your experience!</h2>
+    <h2 style="margin: 0; padding: 0 20px 15px 20px; text-align: center;">
+      <ion-icon style="font-size: 1.5em;" class="animated infinite swing slow" name="logo-twitter"></ion-icon>
+    </h2>
+  </div>
+
+  <ion-item lines="none">
+    <ion-label position="floating">How'd it go?</ion-label>
+    <ion-textarea id="userInput" [(ngModel)]="userInput"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-textarea
+      disabled
+      readonly
+      value="#rxss #simpleDrugSavings">
+    </ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" color="secondary" style="margin: 15px;" (click)="sendTweet()">Tweet it!</ion-button>
+
+  <ion-img src="/assets/rxss-logo.svg" style="margin: 55px auto 0 auto; width: 75%;"></ion-img>
 </ion-content>
