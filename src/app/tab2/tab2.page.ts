@@ -1,10 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { StatsBarChart } from '../../data/data';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
 import * as d3Array from 'd3-array';
 import * as d3Axis from 'd3-axis';
+
+interface Data {
+    Type: string;
+    Cost: number;
+    }
+
+
+
 
 @Component({
   selector: 'app-tab2',
@@ -12,6 +21,30 @@ import * as d3Axis from 'd3-axis';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit {
+    public drugId: number;
+    private drugSet1 = new Array();
+    private drugSet2 = new Array();
+    private drugSet3 = new Array();
+    public activeDrugSet = null;
+
+     constructor(private route: ActivatedRoute) {
+       this.drugId = +this.route.snapshot.paramMap.get('id');
+        this.drugSet1 = [
+            {Type: 'Generic', Cost: 20},
+            {Type: 'Name Brand', Cost: 100}];
+        this.drugSet2 = [
+            {Type: 'Generic', Cost: 30},
+            {Type: 'Name Brand', Cost: 100}];
+        this.drugSet3 = [
+            {Type: 'Generic', Cost: 25},
+            {Type: 'Name Brand', Cost: 100}];
+
+        this.activeDrugSet = this['drugSet' + this.drugId];
+
+        this.width = 900 - this.margin.left - this.margin.right;
+        this.height = 500 - this.margin.top - this.margin.bottom;
+     }
+
 
   title = 'D3 Barchart with Ionic 4';
   width: number;
@@ -21,11 +54,6 @@ export class Tab2Page implements OnInit {
   y: any;
   svg: any;
   g: any;
-
-  constructor() {
-    this.width = 900 - this.margin.left - this.margin.right;
-    this.height = 500 - this.margin.top - this.margin.bottom;
-  }
 
   ngOnInit() {
     this.initSvg();
@@ -47,8 +75,8 @@ export class Tab2Page implements OnInit {
   initAxis() {
     this.x = d3Scale.scaleBand().rangeRound([0, this.width]).padding(0.1);
     this.y = d3Scale.scaleLinear().rangeRound([this.height, 0]);
-    this.x.domain(StatsBarChart.map((d) => d.Type));
-    this.y.domain([0, d3Array.max(StatsBarChart, (d) => d.Cost)]);
+    this.x.domain(this.activeDrugSet.map((d) => d.Type));
+    this.y.domain([0, d3Array.max(this.activeDrugSet, (d) => d.Cost)]);
   }
 
   drawAxis() {
@@ -60,7 +88,7 @@ export class Tab2Page implements OnInit {
 
   drawBars() {
     this.g.selectAll('.bar')
-        .data(StatsBarChart)
+        .data(this.activeDrugSet)
         .enter()
         .append("rect")
         .style("fill", "#4c3e54")
@@ -72,7 +100,7 @@ export class Tab2Page implements OnInit {
         .attr("dy", ".75em")
         .text(function(d) { return d.Cost; } );
     this.g.selectAll('.bar')
-        .data(StatsBarChart)
+        .data(this.activeDrugSet)
         .enter()
         .append("text")
         .style("fill", "#00bcf2")
