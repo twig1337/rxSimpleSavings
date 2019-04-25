@@ -38,7 +38,6 @@ export class Tab2Page implements OnInit {
         this.drugSet3 = [
             {Type: 'Generic', Cost: 25},
             {Type: 'Name Brand', Cost: 100}];
-        this.drugId = 1;
 
         this.activeDrugSet = this['drugSet' + this.drugId];
 
