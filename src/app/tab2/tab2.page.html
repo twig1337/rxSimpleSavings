@@ -12,11 +12,20 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+<ng-template [ngIf]="drugId == 1">
+  <span style="color: black; font-size: 20px;  text-align: center;">Give us a call, so we contact your prescriber and save you some money! </span>
+  <ion-button expand="block" href="tel:+1-800-555-5555">Call 1-800-555-5555</ion-button>
+</ng-template>
+<ng-template [ngIf]="drugId == 2">
+  <span style="color: black; font-size: 20px;">You are currently a name brand drug. Switch to a generic and save! </span>
+</ng-template>
+<ng-template [ngIf]="drugId == 3">
+  <h2 style="color: white; background-color: #00bcf2; margin: 0; padding: 10px 20px 15px 20px; text-align: center;">Have you shopped around at a different pharmacy to save money? If so, not anymore! Let
+    us tell you which pharmacy will help you save the most.</h2>
+</ng-template>
   <div id="barChart"></div>
-</ion-content>
-
+  </ion-content>
 <ion-footer>
   <ion-toolbar>
     <ion-item href="/tabs/tab1">
