@@ -1,1 +1,12 @@
 
+.badge {
+    padding: 0px;
+    margin-left: 10px;
+    border-radius: 4px;
+    background: #4c3e54;
+    color:#00bcf2;
+}
+
+.badge.open {
+    background: #00bcf2;
+}
