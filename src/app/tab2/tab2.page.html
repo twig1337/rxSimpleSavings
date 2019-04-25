@@ -14,22 +14,30 @@
 </ion-header>
 <ion-content>
 <ng-template [ngIf]="drugId == 1">
-  <span style="color: black; font-size: 20px;  text-align: center;">Give us a call, so we contact your prescriber and save you some money! </span>
+  <div style="color: white; background-color: #00bcf2; margin: 0; padding: 10px 20px 15px 20px; text-align: center;">
+    <h4>Give us a call, so we contact your prescriber and save you some money!</h4>
+  </div>
   <ion-button expand="block" href="tel:+1-800-555-5555">Call 1-800-555-5555</ion-button>
 </ng-template>
 <ng-template [ngIf]="drugId == 2">
-  <span style="color: black; font-size: 20px;">You are currently a name brand drug. Switch to a generic and save! </span>
+  <div style="color: white; background-color: #00bcf2; margin: 0; padding: 10px 20px 15px 20px; text-align: center;">
+    <h4>You are currently a name brand drug. Switch to a generic and save!</h4>
+  </div>
 </ng-template>
 <ng-template [ngIf]="drugId == 3">
   <h2 style="color: white; background-color: #00bcf2; margin: 0; padding: 10px 20px 15px 20px; text-align: center;">Have you shopped around at a different pharmacy to save money? If so, not anymore! Let
     us tell you which pharmacy will help you save the most.</h2>
 </ng-template>
+  <h6 style ="padding: 0px 20px 15px 0px; text-align: center;">What you could pay vs what you are paying</h6>
   <div id="barChart"></div>
   </ion-content>
 <ion-footer>
   <ion-toolbar>
     <ion-item href="/tabs/tab1">
       <a class="button icon-left ion-chevron-left button-clear button-dark">Back</a>
+    </ion-item>
+    <ion-item href="/tabs/tab3">
+      <a class="button icon-right ion-chevron-right button-clear button-dark">Leave Feedback</a>
     </ion-item>
   </ion-toolbar>
 </ion-footer>
